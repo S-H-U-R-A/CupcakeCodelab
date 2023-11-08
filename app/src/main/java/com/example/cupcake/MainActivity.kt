@@ -15,9 +15,12 @@
  */
 package com.example.cupcake
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import com.example.cupcake.ui.theme.CupcakeTheme
 
@@ -30,5 +33,21 @@ class MainActivity : ComponentActivity() {
                 CupcakeApp()
             }
         }
+    }
+}
+
+
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+fun CupcakeAppPreview() {
+    CupcakeTheme {
+        CupcakeApp()
     }
 }

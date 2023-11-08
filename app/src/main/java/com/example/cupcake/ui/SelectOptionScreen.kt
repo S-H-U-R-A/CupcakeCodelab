@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.cupcake.ui
 
 import androidx.compose.foundation.layout.Arrangement
@@ -51,6 +36,8 @@ fun SelectOptionScreen(
     subtotal: String,
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {},
+    onCancelButtonClicked: () -> Unit = {},
+    onNextButtonClicked: () -> Unit = {},
     modifier: Modifier = Modifier
 ){
     var selectedValue by rememberSaveable { mutableStateOf("") }
@@ -78,7 +65,7 @@ fun SelectOptionScreen(
                             onSelectionChanged(item)
                         }
                     )
-                    Text(item)
+                    Text(text = item)
                 }
             }
             Divider(
@@ -103,14 +90,17 @@ fun SelectOptionScreen(
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
             verticalAlignment = Alignment.Bottom
         ){
-            OutlinedButton(modifier = Modifier.weight(1f), onClick = {}) {
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = onCancelButtonClicked
+            ) {
                 Text(stringResource(R.string.cancel))
             }
             Button(
                 modifier = Modifier.weight(1f),
                 // the button is enabled when the user makes a selection
                 enabled = selectedValue.isNotEmpty(),
-                onClick = {}
+                onClick = onNextButtonClicked
             ) {
                 Text(stringResource(R.string.next))
             }
@@ -119,7 +109,9 @@ fun SelectOptionScreen(
 
 }
 
-@Preview
+@Preview(
+    showBackground = true,
+)
 @Composable
 fun SelectOptionPreview(){
     SelectOptionScreen(

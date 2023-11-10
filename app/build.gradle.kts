@@ -79,9 +79,24 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${rootProject.extra["lifecycle_version"]}")
 
     //NAVIGATION
-    implementation("androidx.navigation:navigation-compose:2.7.4")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
 
-    //BUILD TYPE DEBUG
+    /*BUILD TYPES LIBRARIES*/
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    /* Region Libraries test */
+
+    //COMPOSE AND JUNIT TEST
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.05.01"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+
+    //NAVIGATION TEST
+    androidTestImplementation("androidx.navigation:navigation-testing:2.7.5")
+    //ESPRESSO INTENTS TEST
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
+
+    /*End region test*/
+
 }

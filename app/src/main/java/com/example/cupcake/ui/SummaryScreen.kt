@@ -45,13 +45,14 @@ fun OrderSummaryScreen(
     )
 
     //Load and format a string resource with the parameters.
-    val orderSummary = stringResource(
+    val orderSummary = stringResource( //ESTE STRING ES USADO AL MOMENTO DE COMPARTIR
         R.string.order_details,
         numberOfCupcakes,
         orderUiState.flavor,
         orderUiState.date,
         orderUiState.quantity
     )
+
     val newOrder = stringResource(R.string.new_cupcake_order)
 
     //Create a list of order summary to display
